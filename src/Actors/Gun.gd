@@ -4,20 +4,27 @@ extends Position2D
 # The Cooldown timer controls the cooldown duration between shots.
 
 
-const BULLET_VELOCITY = 500.0
+const BULLET_VELOCITY = 400.0
 const Bullet = preload("res://src/Objects/Bullet.tscn")
+const ANGLE_FORWARDS = deg2rad(35)
+const ANGLE_UPWARDS = deg2rad(65)
+const ANGLE_DOWNWARDS = deg2rad(10)
+
+const ANGLES = [ANGLE_FORWARDS, ANGLE_UPWARDS, ANGLE_DOWNWARDS]
 
 onready var sound_shoot = $Shoot
 onready var timer = $Cooldown
 
 
+
+
 # This method is only called by Player.gd.
-func shoot(direction = 1):
+func shoot(direction = 1, angle = 0):
 	if not timer.is_stopped():
 		return null
 	var bullet = Bullet.instance()
 	bullet.global_position = global_position
-	bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0)
+	bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY * cos(ANGLES[angle]), -BULLET_VELOCITY * sin(ANGLES[angle]))
 
 	bullet.set_as_toplevel(true)
 	add_child(bullet)

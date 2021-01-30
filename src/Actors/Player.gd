@@ -65,7 +65,12 @@ func _physics_process(_delta):
 	# creating new variables.
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
-		var bullet: Bullet = gun.shoot(sprite.scale.x)
+		var angle_mode = 0
+		if Input.is_action_pressed("aim_up" + action_suffix):
+			angle_mode = 1
+		elif Input.is_action_pressed("aim_down" + action_suffix):
+			angle_mode = -1
+		var bullet: Bullet = gun.shoot(sprite.scale.x, angle_mode)
 		if bullet != null:
 			is_shooting = true
 			# Start listening to the bullet.

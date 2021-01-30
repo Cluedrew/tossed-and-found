@@ -1,6 +1,7 @@
 class_name Bullet
 extends RigidBody2D
 
+signal trigger_teleport(position)
 
 onready var animation_player = $AnimationPlayer
 
@@ -12,3 +13,5 @@ func destroy():
 func _on_body_entered(body):
 	if body is Enemy:
 		body.destroy()
+	else:
+		emit_signal("trigger_teleport", position)

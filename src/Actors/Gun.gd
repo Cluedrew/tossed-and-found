@@ -14,7 +14,7 @@ onready var timer = $Cooldown
 # This method is only called by Player.gd.
 func shoot(direction = 1):
 	if not timer.is_stopped():
-		return false
+		return null
 	var bullet = Bullet.instance()
 	bullet.global_position = global_position
 	bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0)
@@ -22,4 +22,4 @@ func shoot(direction = 1):
 	bullet.set_as_toplevel(true)
 	add_child(bullet)
 	sound_shoot.play()
-	return true
+	return bullet

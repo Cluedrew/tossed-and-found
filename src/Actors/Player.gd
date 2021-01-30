@@ -65,7 +65,14 @@ func _physics_process(_delta):
 	# creating new variables.
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
-		is_shooting = gun.shoot(sprite.scale.x)
+		var bullet: Bullet = gun.shoot(sprite.scale.x)
+		if bullet != null:
+			is_shooting = true
+			# Start listening to the bullet.
+			if bullet.connect("trigger_teleport",
+					self, "_on_trigger_teleport",
+					[ ], CONNECT_ONESHOT):
+				print("Bad connect to bullet")
 
 	var animation = get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():
@@ -109,3 +116,6 @@ func get_new_animation(is_shooting = false):
 	if is_shooting:
 		animation_new += "_weapon"
 	return animation_new
+
+func _on_trigger_teleport(to_position: Vector2):
+	self.position = to_position

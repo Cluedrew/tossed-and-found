@@ -1,9 +1,9 @@
 extends BaseLevel
 
 const LIMIT_LEFT = -315
-const LIMIT_TOP = -1000
-const LIMIT_RIGHT = 3000
-const LIMIT_BOTTOM = 800
+const LIMIT_TOP = -250
+const LIMIT_RIGHT = 955
+const LIMIT_BOTTOM = 690
 
 func _ready():
 	var spawn1: Node2D = $PlayerSpawns/Player1of1

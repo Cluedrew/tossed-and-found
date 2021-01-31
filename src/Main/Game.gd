@@ -6,11 +6,19 @@ extends Node
 # The "_" prefix is a convention to indicate that variables are private,
 # that is to say, another node or script should not access them.
 onready var _pause_menu = $InterfaceLayer/PauseMenu
+# Maybe the start menu should be its own scene.
+onready var _start_menu = $InterfaceLayer/StartMenu
+var _waiting_to_start = true
 
 
 func _init():
 	OS.min_window_size = OS.window_size
 	OS.max_window_size = OS.get_screen_size()
+
+
+func _ready():
+	get_tree().paused = true
+	_start_menu.open()
 
 
 func _notification(what):
@@ -48,3 +56,11 @@ func _unhandled_input(event):
 		else:
 			# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
+
+	# Close the start screen.
+	elif _waiting_to_start and event.is_action_released("shoot"):
+		_waiting_to_start = false
+		var tree: SceneTree = get_tree()
+		tree.paused = false
+		tree.set_input_as_handled()
+		_start_menu.close()

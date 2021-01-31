@@ -1,8 +1,10 @@
 extends AudioStreamPlayer
 
-const DOUBLE_VOLUME_DB = 6 # Do not change. Represents doubling of sound pressure.
+# Do not change. Represents doubling of sound pressure.
+const DOUBLE_VOLUME_DB = 6
 
 export(int) var base_volume_db = -4
+export(int) var step_volume_db = 1
 
 func _ready():
 	# To avoid AudioStreamPlayer2D sounds playing on top of each other and
@@ -14,3 +16,10 @@ func _ready():
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), base_volume_db)
 		volume_db = 0
+
+# GUI event
+func _process(_delta):
+	if Input.is_action_just_pressed("volume_down"):
+		volume_db -= step_volume_db
+	elif Input.is_action_just_pressed("volume_up"):
+		volume_db += step_volume_db

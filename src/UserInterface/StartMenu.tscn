@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
+[ext_resource path="res://src/UserInterface/StartMenu.gd" type="Script" id=2]
+
+[node name="StartMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 801.0
+margin_bottom = 478.0
+color = Color( 0.0666667, 0.168627, 0.698039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 17.0
+margin_top = 18.0
+margin_right = 784.0
+margin_bottom = 462.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 127.0
+margin_right = 767.0
+margin_bottom = 127.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Tossed and Found"
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_top = 131.0
+margin_right = 767.0
+margin_bottom = 174.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tossed and Found
+"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 178.0
+margin_right = 767.0
+margin_bottom = 246.0
+alignment = 1
+
+[node name="Controls" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 310.0
+margin_right = 456.0
+margin_bottom = 68.0
+columns = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Controls"]
+margin_right = 52.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Move:"
+align = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Controls"]
+margin_left = 56.0
+margin_right = 146.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Left/Right"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Controls"]
+margin_top = 24.0
+margin_right = 52.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Aim:"
+align = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Controls"]
+margin_left = 56.0
+margin_top = 24.0
+margin_right = 146.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Up/Down"
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Controls"]
+margin_top = 48.0
+margin_right = 52.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Shoot:"
+align = 2
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Controls"]
+margin_left = 56.0
+margin_top = 48.0
+margin_right = 146.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Space Bar"
+
+[node name="Instructions" type="Label" parent="VBoxContainer"]
+margin_top = 250.0
+margin_right = 767.0
+margin_bottom = 316.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "
+The robot teleports to where ever the shot lands.
+Press shoot to Start"
+align = 1

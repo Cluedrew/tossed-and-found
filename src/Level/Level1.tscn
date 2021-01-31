@@ -267,3 +267,8 @@ volume_db = -15.0
 autoplay = true
 script = ExtResource( 9 )
 base_volume_db = -14
+
+[node name="PlayerSpawns" type="Node" parent="."]
+
+[node name="Player1of1" type="Position2D" parent="PlayerSpawns"]
+position = Vector2( 114.293, 520.667 )

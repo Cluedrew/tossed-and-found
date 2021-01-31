@@ -64,3 +64,26 @@ func _unhandled_input(event):
 		tree.paused = false
 		tree.set_input_as_handled()
 		_start_menu.close()
+
+# TEMP: To change levels
+func _input(_event):
+	if Input.is_key_pressed(KEY_1):
+		set_current_level("res://src/Level/Level1.tscn")
+	elif Input.is_key_pressed(KEY_2):
+		set_current_level("res://src/Level/Level2.tscn")
+
+# Call this to change the active level.
+func set_current_level(resource_path: String):
+	var new_scene: PackedScene = load(resource_path)
+	if null == new_scene:
+		print("Error: Could not load level from ", resource_path)
+		return
+	var new_level: Node = new_scene.instance()
+	if null == new_level:
+		print("Error: Failed to create level from ", resource_path)
+		return
+	var old_level: Node = get_node("Level")
+	if old_level:
+		remove_child(old_level)
+	new_level.name = "Level"
+	add_child(new_level)
